@@ -3,9 +3,14 @@ import React, { useContext } from 'react';
 import loginLotty from '../../assets/lottiFiles/login.json'
 import AuthContext from '../../context/AuthContext/AuthContext';
 import SocialLogin from '../shared/SocialLogin';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
     const {signInUser} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+    console.log('signin', location);
+    const from = location.state || '/';
 
     const handleSignIn = e => {
         e.preventDefault()
@@ -18,6 +23,7 @@ const SignIn = () => {
         signInUser(email,password)
         .then(result =>{
             console.log('SignIn done',result.user);
+            navigate(from)
             
         })
         .catch(error => {

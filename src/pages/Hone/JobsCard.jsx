@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaDollarSign, FaMapMarkerAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const JobsCard = ({ job }) => {
-    const { title, company_logo, company, requirements, description, location, salaryRange } = job;
+    const {_id, title, company_logo, company, requirements, description, location, salaryRange } = job;
     return (
         <div className="card card-compact bg-base-100 shadow-xl">
            <div className='flex gap-4 m-4'>
@@ -24,14 +25,14 @@ const JobsCard = ({ job }) => {
                 <p>{description}</p>
                 <div className='flex flex-wrap gap-2'>
                     {
-                        requirements.map(skill => <p className='border rounded-lg text-center p-2 hover:text-white hover:bg-blue-400 hover:cursor-pointer'>{skill}</p>)
+                        requirements.map((skill,index) => <p key={index} className='border rounded-lg text-center p-2 hover:text-white hover:bg-blue-400 hover:cursor-pointer'>{skill}</p>)
                     }
                 </div>
                 
                 <div className="card-actions justify-end items-center">
 
                     <p className='flex items-center '>Salary: <FaDollarSign></FaDollarSign> {salaryRange.min} - {salaryRange.max} {salaryRange.currency}</p>
-                    <button className="btn btn-accent">Apply</button>
+                    <Link to={`/jobs/${_id}`}><button className="btn btn-accent">Apply</button></Link>
                 </div>
             </div>
         </div>

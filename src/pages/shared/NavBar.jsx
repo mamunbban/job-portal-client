@@ -7,18 +7,18 @@ const NavBar = () => {
     const handleSignOut = ()=>{
         signOutUser()
         .then(()=>{
-            console.log('sign out success');
+            // ('sign out success');
 
         })
         .catch(error =>{
-            console.log('failed to signout ');
+            // ('failed to signout ');
         })
     }
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/myApplications">My Applications</NavLink></li>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/addJob">Add A New Job</NavLink></li>
+        <li><NavLink to="/myPostedJob">My Posted Job</NavLink></li>
         
     </>
     return (

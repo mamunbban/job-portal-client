@@ -9,6 +9,9 @@ import JobDetails from "../pages/jobDetails/JobDetails";
 import PrivateRoute from "./PrivateRoute";
 import JobApply from "../pages/Hone/JobApply/JobApply";
 import MyApplications from "../pages/MyApplications/MyApplications";
+import Adjob from "../pages/AddJob/Adjob";
+import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
+import ViewApplication from "../pages/ViewApplication/ViewApplication";
 
 
 
@@ -32,8 +35,21 @@ import MyApplications from "../pages/MyApplications/MyApplications";
           element: <PrivateRoute><JobApply></JobApply></PrivateRoute>
         },
         {
+          path: '/addJob',
+          element: <PrivateRoute><Adjob></Adjob></PrivateRoute>
+        },
+        {
+          path: '/myPostedJob',
+          element: <PrivateRoute><MyPostedJobs></MyPostedJobs></PrivateRoute>
+        },
+        {
           path: '/myApplications',
           element: <PrivateRoute><MyApplications></MyApplications></PrivateRoute>
+        },
+        {
+          path: '/viewApplication/:job_id',
+          element: <PrivateRoute><ViewApplication></ViewApplication></PrivateRoute>,
+          loader: ({params})=> fetch(`http://localhost:5000/job-applications/jobs/${params.job_id}`)
         },
         {
             path: '/register',

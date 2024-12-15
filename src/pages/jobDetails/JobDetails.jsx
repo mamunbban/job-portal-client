@@ -6,7 +6,7 @@ const JobDetails = () => {
     const job = useLoaderData()
     const {_id,title,jobType,requirements, company,company_logo,description,location,applicationDeadline
     } = job;
-    console.log(job);
+    // (job);
     
     return (
         <div className='w-8/12 mt-12 mb-12 space-y-4 mx-auto border border-solid bg-green-200 border-red-300 p-6'>

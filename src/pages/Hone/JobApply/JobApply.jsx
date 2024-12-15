@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import UseAuth from '../../../hooks/UseAuth';
+import Swal from 'sweetalert2';
 
 const JobApply = () => {
     const {user}= UseAuth()
     const {id} = useParams()
     const navigate = useNavigate()
-    console.log(user);
+    // clg(user);
 
     
 
@@ -19,7 +20,7 @@ const JobApply = () => {
         const GitHub = form.GitHub.value;
         const Resume = form.Resume.value;
 
-        console.log(LinkedIn, GitHub, Resume);
+        // (LinkedIn, GitHub, Resume);
 
         const jobApplication ={
             job_id: id,
@@ -38,9 +39,15 @@ const JobApply = () => {
         })
         .then(res => res.json())
         .then(data =>{
-            console.log(data);
+            // (data);
            if(data.insertedId){
-            alert('done')
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Apply Successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
             navigate('/myApplications')
            }
         })

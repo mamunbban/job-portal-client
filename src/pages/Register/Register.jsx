@@ -13,7 +13,7 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value
 
-        console.log(email, password);
+        (email, password);
 
         // //password validation
         const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{6,6}$/;
@@ -26,10 +26,10 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                (result.user);
             })
             .catch(error => {
-                console.log(error.message);
+                (error.message);
             })
 
 
